@@ -1,0 +1,13 @@
+.popup__input-box {
+  padding: 0;
+  border: 0;
+  width: 100%;
+  min-height: 27px;
+  box-sizing: border-box;
+  border-bottom:  1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  font-family: inherit;
+}

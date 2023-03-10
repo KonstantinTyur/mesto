@@ -1,0 +1,19 @@
+.profile__info {
+  margin: 0;
+  padding: 0;
+  grid-area: profile__info;
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) 24px;
+  grid-template-areas:
+  "profile__title profile__edit-button"
+  "profile__description .";
+  gap: 16px 18px;
+
+}
+
+@media screen and (max-width: 900px) {
+  .profile__info {
+  gap: 9px 14px;
+  transform: translateX(18px);
+  }
+}
