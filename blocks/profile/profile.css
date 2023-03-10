@@ -1,0 +1,24 @@
+.profile {
+  width: 100%;
+  display: grid;
+  grid-template-columns:  max-content max-content 1fr ;
+  grid-template-areas:
+  "profile__avatar profile__info profile__add-button";
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  .profile {
+    grid-template-areas:
+   "profile__avatar"
+   "profile__info"
+   "profile__add-button";
+   grid-template-columns:   1fr ;
+   justify-items: center;
+   justify-content: center;
+   gap: 27px;
+
+ }
+}
