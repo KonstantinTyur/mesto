@@ -1,12 +1,14 @@
 .profile {
   width: 100%;
+  max-width: 880px;
   display: grid;
-  grid-template-columns:  max-content max-content 1fr;
+  grid-template-columns:  120px 1fr 150px;
   grid-template-areas:
   "profile__avatar profile__info profile__add-button";
   justify-content: flex-start;
   align-items: center;
   gap: 25px;
+
 }
 
 @media screen and (max-width: 900px) {

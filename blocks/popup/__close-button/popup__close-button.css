@@ -6,6 +6,7 @@
   position: absolute;
   top: -40px;
   right: -40px;
+  border: none;
   box-sizing: border-box;
   object-fit: cover;
   background: none;

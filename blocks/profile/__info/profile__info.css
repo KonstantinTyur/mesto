@@ -3,11 +3,15 @@
   padding: 0;
   grid-area: profile__info;
   display: grid;
-  grid-template-columns: minmax(min-content, max-content) 24px;
+  grid-template-columns: fit-content(500px) 24px;
   grid-template-areas:
   "profile__title profile__edit-button"
-  "profile__description .";
+  "profile__description profile__description";
   gap: 16px 18px;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
 }
 
