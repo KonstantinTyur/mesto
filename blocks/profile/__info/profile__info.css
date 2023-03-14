@@ -6,7 +6,7 @@
   grid-template-columns: fit-content(500px) 24px;
   grid-template-areas:
   "profile__title profile__edit-button"
-  "profile__description profile__description";
+  "profile__description .";
   gap: 16px 18px;
   box-sizing: border-box;
   text-overflow: ellipsis;
@@ -17,7 +17,8 @@
 
 @media screen and (max-width: 900px) {
   .profile__info {
-  gap: 9px 14px;
-  transform: translateX(18px);
+    grid-template-columns: fit-content(211px) 20px;
+    gap: 14px 10px;
+    transform: translateX(18px);
   }
 }
