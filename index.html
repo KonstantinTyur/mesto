@@ -26,78 +26,56 @@
         <button type="button" class="profile__add-button"></button>
       </section>
       <section aria-label="Карточки мест в России" class="photo-grid">
+
         <ul class="elements">
-          <li>
-            <article aria-label="Домбай" class="element">
-              <img src="./images/dom.jpg" alt="Домбай" class="element__img">
-              <div class="element__figcaption">
-                <h2 class="element__text">Домбай</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article aria-label="Гора Эльбрус" class="element">
-              <img src="./images/elb.jpg" alt="Гора Ельбрус" class="element__img">
-              <div class="element__figcaption">
-                <h2 class="element__text">Эльбрус</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article aria-label="Город Карачаевск" class="element">
-              <img src="./images/kar.jpg" alt="город Карачаевск" class="element__img">
-              <div class="element__figcaption">
-                <h2 class="element__text">Карачаевск</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article aria-label="Домбай" class="element">
-              <img src="./images/dom.jpg" alt="Домбай" class="element__img">
-              <div class="element__figcaption">
-                <h2 class="element__text">Домбай</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article aria-label="Гора Эльбрус" class="element">
-              <img src="./images/elb.jpg" alt="Гора Ельбрус" class="element__img">
-              <div class="element__figcaption">
-                <h2 class="element__text">Эльбрус</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article aria-label="Карачаево-Черкессия" class="element">
-              <img src="./images/kar-ch.jpg" alt="Карачаево-Черкессия" class="element__img">
-              <div class="element__figcaption">
-                <h2 class="element__text">Карачаево-Черкессия</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </article>
-          </li>
         </ul>
+
       </section>
     </main>
     <footer class="footer page__footer">
       <p class="footer__text">&copy;Тюр Константин</p>
     </footer>
-    <section class="popup">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <button type="button" class="popup__close-button"></button>
-        <form name="form-name-job" class="popup__form-name-job">
+        <form name="form-name-job" class="popup__form">
           <input type="text" name="name" value="" class="popup__input-box popup__input-box_type_name">
           <input type="text" name="job" value="" class="popup__input-box popup__input-box_type_job">
           <button type="submit" class="popup__save-button">Cохранить</button>
         </form>
       </div>
-    </section>
+    </div>
+    <div class="popup popup_type_card">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <button type="button" class="popup__close-button"></button>
+        <form name="form-name-place" class="popup__form">
+          <input type="text" name="legend" value="" class="popup__input-box popup__input-box_type_legend">
+          <input type="url" name="url" value="" class="popup__input-box popup__input-box_type_url">
+          <button type="submit" class="popup__save-button">Cохранить</button>
+        </form>
+      </div>
+    </div>
+
+
+
+
+    <template id="cardElementTemplate">
+      <li class="elements__item">
+        <article aria-label="#" class="element">
+          <button type="button" class="element__del"></button>
+          <img src="#" alt="#" class="element__img">
+          <div class="element__figcaption">
+            <h2 class="element__text"></h2>
+            <button type="button" class="element__like"></button>
+          </div>
+        </article>
+      </li>
+    </template>
+
+
+
   </div>
   <script src="./scripts/index.js"></script>
 </body>
