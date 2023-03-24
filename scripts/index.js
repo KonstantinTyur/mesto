@@ -85,6 +85,9 @@ initialCards.forEach((element) => {
   cardList.append(card);
 })
 
+
+
+
 /* f открытия любого popup */
 function openPopup (popup) {
     popup.classList.add('popup_opened');
@@ -95,6 +98,17 @@ function closePopup (popup) {
     popup.classList.remove('popup_opened');
 }
 
+/* Слушатель клика на кнопку крестик в любом popup */
+popupBtnClose.forEach((element) => {
+  const popup = element.closest('.popup');
+  element.addEventListener('click', () => closePopup(popup));
+});
+
+
+
+
+
+
 /* f редактирования данных на странице через popup Profile */
 function handleFormProfileSubmit (evt) {
     evt.preventDefault();
@@ -103,13 +117,14 @@ function handleFormProfileSubmit (evt) {
     closePopup(popupProfile);
 }
 
-/* ???? f добавления карточек на страницу через popup Card */
+/* f добавления карточек на страницу через popup Card */
 function handleFormAddCardSubmit (evt) {
   evt.preventDefault();
-  cardList.append(createCard({name: popupProfileInputName.value, link: popupAddCardInputUrl.value}));
-  debugger;
+  cardList.append(createCard({name: popupAddCardInputTitle.value, link: popupAddCardInputUrl.value}));
   closePopup(popupAddCard);
   };
+
+
 
 
 
@@ -121,15 +136,31 @@ profileBtnEdit.addEventListener('click', () => {
   openPopup(popupProfile);
 });
 
-/* ???? Слушатель клика на кнопку добавления карточек в секции Card */
+/* Слушатель клика на кнопку добавления карточек в секции Card */
 profileBtnAdd.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
-/* Слушатель клика на кнопку крестик в любом popup */
-popupBtnClose.forEach((element) => {
-  const popup = element.closest('.popup');
-  element.addEventListener('click', () => closePopup(popup));
-});
+
+
+
+
+popupFormProfile.addEventListener('submit', handleFormProfileSubmit);
+
+popupFormCard.addEventListener('submit', handleFormAddCardSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
