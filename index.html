@@ -35,6 +35,8 @@
     <footer class="footer page__footer">
       <p class="footer__text">&copy;Тюр Константин</p>
     </footer>
+
+
     <div class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -46,14 +48,17 @@
         </form>
       </div>
     </div>
+
+
+
     <div class="popup popup_type_card">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
         <button type="button" class="popup__close-button"></button>
         <form name="form-name-place" class="popup__form">
-          <input type="text" name="legend" value="" class="popup__input-box popup__input-box_type_legend">
-          <input type="url" name="url" value="" class="popup__input-box popup__input-box_type_url">
-          <button type="submit" class="popup__save-button">Cохранить</button>
+          <input type="text" name="name" placeholder="Название" value="" class="popup__input-box popup__input-box_type_title">
+          <input type="url" name="url" placeholder="Ссылка на картинку" value="" class="popup__input-box popup__input-box_type_url">
+          <button type="submit" class="popup__save-button">Cоздать</button>
         </form>
       </div>
     </div>
@@ -64,7 +69,7 @@
     <template id="cardElementTemplate">
       <li class="elements__item">
         <article aria-label="#" class="element">
-          <button type="button" class="element__del"></button>
+          <button type="button" class="element__del-button"></button>
           <img src="#" alt="#" class="element__img">
           <div class="element__figcaption">
             <h2 class="element__text"></h2>
