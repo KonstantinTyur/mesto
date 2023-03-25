@@ -5,19 +5,18 @@ const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 
 /* ~ по выборке popup кнопок закрыть у всех попапов */
-const popup = document.querySelector('.popup');
-const popupBtnClose = document.querySelectorAll('.popup__close-button');
+const  closeButtons = document.querySelectorAll('.popup__close-button');
 
 
 /* ~ по работе с popup Profile*/
 const popupProfile = document.querySelector('.popup_type_profile');
-const popupFormProfile = popupProfile.querySelector('.popup__form');
+const profileForm = document.forms["profile-form"];
 const popupProfileInputName = popupProfile.querySelector('.popup__input-box_type_name');
 const popupProfileInputJob = popupProfile.querySelector('.popup__input-box_type_job');
 
 /* ~ по работе с popup Card*/
 const popupAddCard = document.querySelector('.popup_type_card');
-const popupFormCard = popupAddCard.querySelector('.popup__form');
+const cardForm = document.forms["card-form"];
 const popupAddCardInputTitle = popupAddCard.querySelector('.popup__input-box_type_title');
 const popupAddCardInputUrl = popupAddCard.querySelector('.popup__input-box_type_url');
 
@@ -84,7 +83,8 @@ function createCard(object) {
   cardImage.addEventListener('click', () => {
     openPopup(popupView);
     popupImg.src = object.link;
-    popupCapt.textContent = object.name;;
+    popupImg.alt = object.name;
+    popupCapt.textContent = object.name;
   });
 
   return cardItem;
@@ -123,7 +123,7 @@ function handleFormAddCardSubmit(evt) {
 };
 
 /* Слушатель клика на кнопку крестик в любом popup */
-popupBtnClose.forEach((element) => {
+ closeButtons.forEach((element) => {
   const popup = element.closest('.popup');
   element.addEventListener('click', () => closePopup(popup));
 });
@@ -141,10 +141,10 @@ profileBtnAdd.addEventListener('click', () => {
 });
 
 /* Слушатель клика на кнопку Сохранить в секции Profile */
-popupFormProfile.addEventListener('submit', handleFormProfileSubmit);
+profileForm.addEventListener('submit', handleFormProfileSubmit);
 
 /* Слушатель клика на кнопку Создать в секции Card */
-popupFormCard.addEventListener('submit', handleFormAddCardSubmit);
+cardForm.addEventListener('submit', handleFormAddCardSubmit);
 
 
 
