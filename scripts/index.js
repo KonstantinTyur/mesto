@@ -103,7 +103,9 @@ initialCards.forEach((element) => {
 
 /* f открытия любого popup */
 function openPopup(popup) {
-  saveButtons.forEach((button) => { button.classList.add('popup__save-button_type_disabled') });
+  saveButtons.forEach((button) => { button.classList.add('popup__save-button_type_disabled');
+  button.setAttribute('disabled', true);
+});
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByClickOnEsc);
 }
