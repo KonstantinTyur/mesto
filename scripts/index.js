@@ -4,10 +4,14 @@ const profileBtnAdd = document.querySelector('.profile__add-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 
+/* ~ по выборке всех попапов */
+const popupElements = document.querySelectorAll('.popup');
+
+
 /* ~ по выборке popup кнопок закрыть у всех попапов */
 const  closeButtons = document.querySelectorAll('.popup__close-button');
+const  saveButtons = document.querySelectorAll('.popup__save-button');
 
-const popupElements = document.querySelectorAll('.popup');
 
 /* ~ по работе с popup Profile*/
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -99,12 +103,15 @@ initialCards.forEach((element) => {
 
 /* f открытия любого popup */
 function openPopup(popup) {
+  saveButtons.forEach((button) => {button.classList.add('popup__save-button_type_disabled')});
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByClickOnEsc);
 }
 
 /* f закрытия любого popup */
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByClickOnEsc);
 }
 
 /* f закрытия любого popup кликом по оверлею*/
@@ -113,6 +120,14 @@ function closePopupByClickOnOverlay(event) {
     return;
   } else {
   closePopup(event.currentTarget);}
+}
+
+/* f закрытия любого popup по Esc */
+function closePopupByClickOnEsc(event) {
+  if (event.key === 'Escape') {
+    console.log(event.key);
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }
 
 /* f редактирования данных на странице через popup Profile */
