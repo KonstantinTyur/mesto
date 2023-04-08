@@ -7,6 +7,7 @@ const profileDescription = document.querySelector('.profile__description');
 /* ~ по выборке popup кнопок закрыть у всех попапов */
 const  closeButtons = document.querySelectorAll('.popup__close-button');
 
+const popupElements = document.querySelectorAll('.popup');
 
 /* ~ по работе с popup Profile*/
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -106,6 +107,14 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+/* f закрытия любого popup кликом по оверлею*/
+function closePopupByClickOnOverlay(event) {
+  if (event.target !== event.currentTarget) {
+    return;
+  } else {
+  closePopup(event.currentTarget);}
+}
+
 /* f редактирования данных на странице через popup Profile */
 function handleFormProfileSubmit(evt) {
   evt.preventDefault();
@@ -145,6 +154,13 @@ profileForm.addEventListener('submit', handleFormProfileSubmit);
 
 /* Слушатель клика на кнопку Создать в секции Card */
 cardForm.addEventListener('submit', handleFormAddCardSubmit);
+
+/* Слушатель клика по оверлею */
+popupElements.forEach((popupItem) => popupItem.addEventListener('click', closePopupByClickOnOverlay))
+
+
+
+
 
 
 
