@@ -9,8 +9,8 @@ const popupElements = document.querySelectorAll('.popup');
 
 
 /* ~ по выборке popup кнопок закрыть у всех попапов */
-const  closeButtons = document.querySelectorAll('.popup__close-button');
-const  saveButtons = document.querySelectorAll('.popup__save-button');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+const saveButtons = document.querySelectorAll('.popup__save-button');
 
 
 /* ~ по работе с popup Profile*/
@@ -103,7 +103,7 @@ initialCards.forEach((element) => {
 
 /* f открытия любого popup */
 function openPopup(popup) {
-  saveButtons.forEach((button) => {button.classList.add('popup__save-button_type_disabled')});
+  saveButtons.forEach((button) => { button.classList.add('popup__save-button_type_disabled') });
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByClickOnEsc);
 }
@@ -119,7 +119,8 @@ function closePopupByClickOnOverlay(event) {
   if (event.target !== event.currentTarget) {
     return;
   } else {
-  closePopup(event.currentTarget);}
+    closePopup(event.currentTarget);
+  }
 }
 
 /* f закрытия любого popup по Esc */
@@ -147,7 +148,7 @@ function handleFormAddCardSubmit(evt) {
 };
 
 /* Слушатель клика на кнопку крестик в любом popup */
- closeButtons.forEach((element) => {
+closeButtons.forEach((element) => {
   const popup = element.closest('.popup');
   element.addEventListener('click', () => closePopup(popup));
 });

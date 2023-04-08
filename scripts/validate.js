@@ -7,8 +7,6 @@ const validationConfig = {
   errorClass: 'popup__error_type_visible'
 }
 
-const log = console.log;
-
 function enableValidation({ formSelector, ...rest }) {
   const formsList = Array.from(document.querySelectorAll(formSelector));
   formsList.forEach((formElement) => {
@@ -51,15 +49,15 @@ function hideInputError(errorElement, inputElement, { inputErrorClass, errorClas
   errorElement.textContent = '';
 };
 
-function hasInvalidInput (inputsList) {
+function hasInvalidInput(inputsList) {
   return inputsList.some((inputElement) => {
-       return !inputElement.validity.valid;
+    return !inputElement.validity.valid;
   })
 }
 
-function toggleButtonState (inputsList, buttonElement, inactiveButtonClass) {
- if (hasInvalidInput(inputsList)) {
-  log(inputsList);
+function toggleButtonState(inputsList, buttonElement, inactiveButtonClass) {
+  if (hasInvalidInput(inputsList)) {
+    log(inputsList);
     buttonElement.classList.add(inactiveButtonClass);
     buttonElement.setAttribute('disabled', true);
   } else {
