@@ -73,7 +73,6 @@ function resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(form) {
     errorElement.classList.remove(validationConfig.errorClass);
     errorElement.textContent = '';
   });
-
   disableButtonSubmit(form.querySelector(validationConfig.submitButtonSelector), validationConfig.inactiveButtonClass);
 }
 
