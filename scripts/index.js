@@ -1,69 +1,3 @@
-/* ~ по работе с секцией profile */
-const profileBtnEdit = document.querySelector('.profile__edit-button');
-const profileBtnAdd = document.querySelector('.profile__add-button');
-const profileTitle = document.querySelector('.profile__title');
-const profileDescription = document.querySelector('.profile__description');
-
-/* ~ по выборке всех попапов */
-const popupElements = document.querySelectorAll('.popup');
-
-
-/* ~ по выборке popup кнопок закрыть у всех попапов */
-const closeButtons = document.querySelectorAll('.popup__close-button');
-const saveButtons = document.querySelectorAll('.popup__save-button');
-
-
-/* ~ по работе с popup Profile*/
-const popupProfile = document.querySelector('.popup_type_profile');
-const profileForm = document.forms["profile-form"];
-const popupProfileInputName = popupProfile.querySelector('.popup__input-box_type_name');
-const popupProfileInputJob = popupProfile.querySelector('.popup__input-box_type_job');
-
-/* ~ по работе с popup Card*/
-const popupAddCard = document.querySelector('.popup_type_card');
-const cardForm = document.forms["card-form"];
-const popupAddCardInputTitle = popupAddCard.querySelector('.popup__input-box_type_title');
-const popupAddCardInputUrl = popupAddCard.querySelector('.popup__input-box_type_url');
-
-/* ~ по работе с popup Image*/
-const popupView = document.querySelector('.popup_type_view')
-const popupImg = popupView.querySelector('.popup__image');
-const popupCapt = popupView.querySelector('.popup__caption');
-
-/* ~ массив с карточками */
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-/* ~ по выбору содержимого тега template */
-const cardElementTemplate = document.querySelector('#cardElementTemplate').content;
-
-/* ~ для выбора места вставки в список ul */
-const cardList = document.querySelector('.elements');
-
 /* f создания карточек */
 function createCard(object) {
   const cardItem = cardElementTemplate.querySelector('.elements__item').cloneNode(true);
@@ -103,10 +37,6 @@ initialCards.forEach((element) => {
 
 /* f открытия любого popup */
 function openPopup(popup) {
-  saveButtons.forEach((button) => {
-    button.classList.add('popup__save-button_type_disabled');
-    button.setAttribute('disabled', true);
-  });
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByClickOnEsc);
 }
@@ -118,18 +48,17 @@ function closePopup(popup) {
 }
 
 /* f закрытия любого popup кликом по оверлею*/
-function closePopupByClickOnOverlay(event) {
-  if (event.target !== event.currentTarget) {
+function closePopupByClickOnOverlay(evt) {
+  if (evt.target !== evt.currentTarget) {
     return;
   } else {
-    closePopup(event.currentTarget);
+    closePopup(evt.currentTarget);
   }
 }
 
 /* f закрытия любого popup по Esc */
-function closePopupByClickOnEsc(event) {
-  if (event.key === 'Escape') {
-    console.log(event.key);
+function closePopupByClickOnEsc(evt) {
+  if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
 }
@@ -158,14 +87,18 @@ closeButtons.forEach((element) => {
 
 /* Слушатель клика на кнопку редактирования персональных данных  в секции Profile */
 profileBtnEdit.addEventListener('click', () => {
+  resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(profileForm);
   popupProfileInputName.value = profileTitle.textContent;
   popupProfileInputJob.value = profileDescription.textContent;
   openPopup(popupProfile);
+
 });
 
 /* Слушатель клика на кнопку добавления карточек в секции Card */
 profileBtnAdd.addEventListener('click', () => {
+  resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(cardForm);
   openPopup(popupAddCard);
+
 });
 
 /* Слушатель клика на кнопку Сохранить в секции Profile */

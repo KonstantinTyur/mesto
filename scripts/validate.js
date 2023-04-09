@@ -1,12 +1,3 @@
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input-box',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_type_disabled',
-  inputErrorClass: 'popup__input-box_type_error',
-  errorClass: 'popup__error_type_visible'
-}
-
 function enableValidation({ formSelector, ...rest }) {
   const formsList = Array.from(document.querySelectorAll(formSelector));
   formsList.forEach((formElement) => {
@@ -57,12 +48,33 @@ function hasInvalidInput(inputsList) {
 
 function toggleButtonState(inputsList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputsList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.setAttribute('disabled', true);
+    disableButtonSubmit(buttonElement, inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.removeAttribute('disabled', true);
+    enableButtonSubmit(buttonElement, inactiveButtonClass);
   }
+}
+
+function disableButtonSubmit(buttonElement, inactiveButtonClass) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true);
+}
+
+function enableButtonSubmit(buttonElement, inactiveButtonClass) {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute('disabled', true);
+}
+
+function resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(form) {
+  form.querySelectorAll(validationConfig.inputSelector).forEach((inputElement) => {
+    const errorElement = form.querySelector(`.popup__error_type_${inputElement.id}`);
+    // console.log(validationConfig.inputErrorClass, validationConfig.errorClass);
+    // hideInputError(errorElement, inputElement, validationConfig.inputErrorClass, validationConfig.errorClass);
+    inputElement.classList.remove(validationConfig.inputErrorClass);
+    errorElement.classList.remove(validationConfig.errorClass);
+    errorElement.textContent = '';
+  });
+
+  disableButtonSubmit(form.querySelector(validationConfig.submitButtonSelector), validationConfig.inactiveButtonClass);
 }
 
 enableValidation(validationConfig);
