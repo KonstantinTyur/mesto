@@ -34,7 +34,7 @@ function showInputError(errorElement, inputElement, { inputErrorClass, errorClas
   errorElement.classList.add(errorClass);
 };
 
-function hideInputError(errorElement, inputElement, { inputErrorClass, errorClass }) {
+function hideInputError(errorElement, inputElement, { inputErrorClass,  errorClass }) {
   inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
@@ -67,11 +67,7 @@ function enableButtonSubmit(buttonElement, inactiveButtonClass) {
 function resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(form) {
   form.querySelectorAll(validationConfig.inputSelector).forEach((inputElement) => {
     const errorElement = form.querySelector(`.popup__error_type_${inputElement.id}`);
-    // console.log(validationConfig.inputErrorClass, validationConfig.errorClass);
-    // hideInputError(errorElement, inputElement, validationConfig.inputErrorClass, validationConfig.errorClass);
-    inputElement.classList.remove(validationConfig.inputErrorClass);
-    errorElement.classList.remove(validationConfig.errorClass);
-    errorElement.textContent = '';
+    hideInputError(errorElement, inputElement, validationConfig);
   });
   disableButtonSubmit(form.querySelector(validationConfig.submitButtonSelector), validationConfig.inactiveButtonClass);
 }
