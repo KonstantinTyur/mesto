@@ -1,39 +1,18 @@
-/* f создания карточек */
-function createCard(object) {
-  const cardItem = cardElementTemplate.querySelector('.elements__item').cloneNode(true);
-  const cardTrash = cardItem.querySelector('.element__del-button');
-  const cardImage = cardItem.querySelector('.element__img');
-  const cardCaption = cardItem.querySelector('.element__text');
-  const cardLike = cardItem.querySelector('.element__like');
+import Card from './Card.js'
+import FormValidator from './FormValidator.js';
 
-  cardItem.querySelector('.element').ariaLabel = object.name;
-  cardCaption.textContent = object.name;
-  cardImage.alt = object.name;
-  cardImage.src = object.link;
 
-  cardLike.addEventListener('click', () => {
-    cardLike.classList.toggle('element__like_type_active');
-  });
-
-  cardTrash.addEventListener('click', () => {
-    cardItem.remove();
-  });
-
-  cardImage.addEventListener('click', () => {
-    openPopup(popupView);
-    popupImg.src = object.link;
-    popupImg.alt = object.name;
-    popupCapt.textContent = object.name;
-  });
-
-  return cardItem;
+// /* f создания карточек */
+function createCard(element) {
+  const card = new Card(element, templateSelector, openPopupView);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
 /* заполнения страницы карточками из массива*/
 initialCards.forEach((element) => {
-  const card = createCard(element);
-  cardList.append(card);
-})
+  cardList.append(createCard(element));
+});
 
 /* f открытия любого popup */
 function openPopup(popup) {
@@ -87,7 +66,7 @@ closeButtons.forEach((element) => {
 
 /* Слушатель клика на кнопку редактирования персональных данных  в секции Profile */
 profileBtnEdit.addEventListener('click', () => {
-  resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(profileForm);
+  profileFormValidator.resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup();
   popupProfileInputName.value = profileTitle.textContent;
   popupProfileInputJob.value = profileDescription.textContent;
   openPopup(popupProfile);
@@ -96,7 +75,7 @@ profileBtnEdit.addEventListener('click', () => {
 
 /* Слушатель клика на кнопку добавления карточек в секции Card */
 profileBtnAdd.addEventListener('click', () => {
-  resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup(cardForm);
+  cardFormValidator.resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup();
   openPopup(popupAddCard);
 
 });
@@ -110,7 +89,21 @@ cardForm.addEventListener('submit', handleFormAddCardSubmit);
 /* Слушатель клика по оверлею */
 popupElements.forEach((popupItem) => popupItem.addEventListener('click', closePopupByClickOnOverlay))
 
+/* f открытия popupView*/
+function openPopupView (object) {
+  openPopup(popupView);
+  popupImg.src = object.link;
+  popupImg.alt = object.name;
+  popupCapt.textContent = object.name;
+}
 
+/* Валидация popup Profile */
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
+profileFormValidator.enableValidation();
+
+/* Валидация popup Profile */
+const cardFormValidator = new FormValidator(validationConfig, cardForm);
+cardFormValidator.enableValidation();
 
 
 

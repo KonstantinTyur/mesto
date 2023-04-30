@@ -58,8 +58,8 @@ const initialCards = [
   }
 ];
 
-/* ~ по выбору содержимого тега template */
-const cardElementTemplate = document.querySelector('#cardElementTemplate').content;
+// /* ~ по выбору содержимого тега template */
+// const cardElementTemplate = document.querySelector('#cardElementTemplate').content;
 
 /* ~ для выбора места вставки в список ul */
 const cardList = document.querySelector('.elements');
@@ -73,3 +73,8 @@ const validationConfig = {
   inputErrorClass: 'popup__input-box_type_error',
   errorClass: 'popup__error_type_visible'
 };
+
+
+const templateSelector = '#cardElementTemplate';
+
+
