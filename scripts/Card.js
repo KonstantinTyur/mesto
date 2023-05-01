@@ -1,6 +1,6 @@
 export default class Card {
-  constructor(initialCards, templateSelector, openPopupView) {
-    this._initialCards = initialCards;
+  constructor(initialCard, templateSelector, openPopupView) {
+    this._initialCard = initialCard;
     this._templateSelector = templateSelector;
     this._openPopupView = openPopupView;
   }
@@ -20,7 +20,7 @@ export default class Card {
   }
 
   _handleOpenPopup = () => {
-    this._openPopupView (this._initialCards);
+    this._openPopupView (this._initialCard);
   }
 
 
@@ -37,9 +37,9 @@ export default class Card {
     this._cardImage = this._element.querySelector('.element__img');
     this._cardCaption = this._element.querySelector('.element__text');
     this._cardLike = this._element.querySelector('.element__like');
-    this._cardImage.src = this._initialCards.link;
-    this._cardImage.alt = this._initialCards.name;
-    this._cardCaption.textContent = this._initialCards.name;
+    this._cardImage.src = this._initialCard.link;
+    this._cardImage.alt = this._initialCard.name;
+    this._cardCaption.textContent = this._initialCard.name;
     this._setEventListeners();
     return this._element;
   }

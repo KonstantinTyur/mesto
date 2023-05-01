@@ -70,7 +70,7 @@ export default class FormValidator {
     this._setEventListeners();
   }
 
-  resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup() {
+  resetValidation() {
     this._inputsList.forEach((inputElement) => {
       const errorElement = this._form.querySelector(`.popup__error_type_${inputElement.id}`);
       this._hideInputError(errorElement, inputElement);

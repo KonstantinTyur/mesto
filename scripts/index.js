@@ -30,7 +30,7 @@ function closePopup(popup) {
 function closePopupByClickOnOverlay(evt) {
   if (evt.target !== evt.currentTarget) {
     return;
-  } else {
+  } {
     closePopup(evt.currentTarget);
   }
 }
@@ -66,7 +66,7 @@ closeButtons.forEach((element) => {
 
 /* Слушатель клика на кнопку редактирования персональных данных  в секции Profile */
 profileBtnEdit.addEventListener('click', () => {
-  profileFormValidator.resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup();
+  profileFormValidator.resetValidation();
   popupProfileInputName.value = profileTitle.textContent;
   popupProfileInputJob.value = profileDescription.textContent;
   openPopup(popupProfile);
@@ -75,7 +75,7 @@ profileBtnEdit.addEventListener('click', () => {
 
 /* Слушатель клика на кнопку добавления карточек в секции Card */
 profileBtnAdd.addEventListener('click', () => {
-  cardFormValidator.resetSettingsValidationErrorAndButtonSubmitWhenOpeningPopup();
+  cardFormValidator.resetValidation();
   openPopup(popupAddCard);
 
 });
@@ -91,10 +91,10 @@ popupElements.forEach((popupItem) => popupItem.addEventListener('click', closePo
 
 /* f открытия popupView*/
 function openPopupView (object) {
-  openPopup(popupView);
   popupImg.src = object.link;
   popupImg.alt = object.name;
   popupCapt.textContent = object.name;
+  openPopup(popupView);
 }
 
 /* Валидация popup Profile */
@@ -104,21 +104,3 @@ profileFormValidator.enableValidation();
 /* Валидация popup Profile */
 const cardFormValidator = new FormValidator(validationConfig, cardForm);
 cardFormValidator.enableValidation();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
