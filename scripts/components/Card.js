@@ -6,7 +6,7 @@ export default class Card {
   }
 
   _getTemplate () {
-    const cardItem = document.querySelector(templateSelector).content.querySelector('.elements__item').cloneNode(true);
+    const cardItem = document.querySelector(this._templateSelector).content.querySelector('.elements__item').cloneNode(true);
     return cardItem;
   }
 
@@ -23,13 +23,11 @@ export default class Card {
     this._openPopupView (this._initialCard);
   }
 
-
   _setEventListeners () {
     this._cardLike.addEventListener('click', this._handleLike );
     this._cardTrash.addEventListener('click', this._handleTrash);
     this._cardImage.addEventListener('click', this._handleOpenPopup);
   }
-
 
   generateCard () {
     this._element = this._getTemplate();
@@ -38,11 +36,9 @@ export default class Card {
     this._cardCaption = this._element.querySelector('.element__text');
     this._cardLike = this._element.querySelector('.element__like');
     this._cardImage.src = this._initialCard.link;
-    this._cardImage.alt = this._initialCard.name;
-    this._cardCaption.textContent = this._initialCard.name;
+    this._cardImage.alt = this._initialCard.title;
+    this._cardCaption.textContent = this._initialCard.title;
     this._setEventListeners();
     return this._element;
   }
 }
-
-
