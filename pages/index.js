@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import Card from '../scripts/components/Card.js'
 import FormValidator from '../scripts/components/FormValidator.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
@@ -18,6 +19,7 @@ import {
   popupProfileSelector,
   popupCardSelector
 } from '../scripts/utils/constants.js';
+
 
 
 const userInfo = new UserInfo(profileParameters);
