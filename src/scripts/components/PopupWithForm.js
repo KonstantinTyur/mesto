@@ -24,11 +24,15 @@ export default class PopupWhithForm extends Popup {
     })
   }
 
+  _renderLoading() {
+    this._submitBtn.textContent = `${this._submitBtn.textContent}...`
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._submitBtn.textContent = `${this._submitBtn.textContent}...`
+      this._renderLoading();
       this._funcSubmit(this._getInputValues());
     });
   }

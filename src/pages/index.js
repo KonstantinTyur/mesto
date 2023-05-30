@@ -47,7 +47,6 @@ const popupDeleteFormCard = new PopupDeleteCard(popupDeleteCardSelector, ({ card
       popupDeleteFormCard.closePopup();
     })
     .catch(error => console.error(`Проблема при удалении карточки: ${error}`))
-    .finally()
 });
 popupDeleteFormCard.setEventListeners();
 
@@ -81,11 +80,11 @@ const section = new Section((element) => {
 const popupProfileForm = new PopupWhithForm(popupProfileSelector, (data) => {
   api.setUserInfo(data)//отправили данные на сервер
     .then(res => {                    //когда все прошло нормально получили объект с новыми свойствами name, job, avatar
-      userInfo.setUserInfo(res)
+      userInfo.setUserInfo(res);
+      popupProfileForm.closePopup();
     })
     .catch(error => console.error(`Проблема при редактировании данных пользователя на странице: ${error}`))
     .finally(() => popupProfileForm.setdefaultTextBtn())
-  popupProfileForm.closePopup();
 });
 popupProfileForm.setEventListeners();
 
@@ -106,12 +105,11 @@ popupCreateCard.setEventListeners();
 const popupUpdateAvatar = new PopupWhithForm(popupAvatarSelector, (data) => {
   api.setAvatar(data)
     .then(res => {
-      userInfo.setUserInfo(res)
+      userInfo.setUserInfo(res);
+      popupUpdateAvatar.closePopup();
     })
     .catch(error => console.error(`Проблема при изменении аватара на странице: ${error}`))
     .finally(() => popupUpdateAvatar.setdefaultTextBtn())
-  // document.querySelector('.profile__avatar').src = data.avatar;
-  popupUpdateAvatar.closePopup();
 });
 popupUpdateAvatar.setEventListeners();
 
@@ -153,7 +151,6 @@ Promise.all([api.getUser(), api.getCards()])
     initialCards.forEach((initialCard) => { initialCard.myId = dataUser._id })
     userInfo.setId(dataUser._id);
     userInfo.setUserInfo(dataUser);
-    section.initialCardsArray(initialCards);
-
+    section.renderItems(initialCards);
   })
   .catch(error => console.error(`Проблема при первоначальном заполнении страницы данными с сервера: ${error}`))

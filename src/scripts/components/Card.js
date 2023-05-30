@@ -20,7 +20,7 @@ export default class Card {
 
   _handleLike = () => {
     this._sendLike(this._cardLike, this._cardId)
-  };
+  }
 
   _handleTrash = () => {
     this._openPopupDelete({ card: this, cardId: this._cardId })

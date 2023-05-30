@@ -9,10 +9,10 @@ export default class UserInfo {
     return { name: this._profileName.textContent, job: this._profileJob.textContent }
   }
 
-  setUserInfo(objectUser) {
-    this._profileName.textContent = objectUser.name;
-    this._profileJob.textContent = objectUser.about;
-    this._profileAvatar.src = objectUser.avatar
+  setUserInfo(userData) {
+    if(userData.name) {this._profileName.textContent = userData.name}/* else {console.log('Не получено с сервера "userData.name"')}*/;
+    if(userData.about) {this._profileJob.textContent = userData.about}/* else {console.log('Не получено с сервера "userData.about"')}*/;
+    if(userData.avatar) {this._profileAvatar.src = userData.avatar}/* else {console.log('Не получено с сервера "userData.avatar"')}*/;
   }
 
   setId(id) {
