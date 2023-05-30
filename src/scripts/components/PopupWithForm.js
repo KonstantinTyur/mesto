@@ -1,17 +1,16 @@
 import Popup from "./Popup.js";
 
-
 export default class PopupWhithForm extends Popup {
   constructor(popupSelect, funcSubmit) {
     super(popupSelect);
     this._funcSubmit = funcSubmit;
     this._form = this._popupSelector.querySelector('.popup__form');
     this._inputItems = this._form.querySelectorAll('.popup__input-box');
+    this._submitBtn = this._form.querySelector('.popup__save-button');
+    this._defaultTextBtn = this._submitBtn.textContent;
   }
 
-
-
-  getInputValues () {
+  _getInputValues() {
     this._objectInputValues = {};
     this._inputItems.forEach(inputItem => {
       this._objectInputValues[inputItem.name] = inputItem.value;
@@ -25,14 +24,21 @@ export default class PopupWhithForm extends Popup {
     })
   }
 
-  setEventListeners () {
+  setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', this._funcSubmit);
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      this._submitBtn.textContent = `${this._submitBtn.textContent}...`
+      this._funcSubmit(this._getInputValues());
+    });
+  }
+
+  setdefaultTextBtn() {
+    this._submitBtn.textContent = this._defaultTextBtn
   }
 
   closePopup() {
     super.closePopup();
     this._form.reset();
   }
-
 }

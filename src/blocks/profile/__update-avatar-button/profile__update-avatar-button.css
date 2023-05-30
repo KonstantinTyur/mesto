@@ -1,0 +1,32 @@
+.profile__update-avatar-button {
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  grid-area: profile__avatar;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.profile__update-avatar-button::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/pencel.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  z-index: 1;
+}
+
+.profile__update-avatar-button:hover::before {
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity .2s;
+}

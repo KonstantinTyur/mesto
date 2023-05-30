@@ -13,4 +13,5 @@
   justify-content: center;
   align-items: center;
   transition: visibility .5s, opacity .5s;
+  z-index: 3;
 }

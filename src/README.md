@@ -1,16 +1,31 @@
-# Проект: Место
+## Проект: Место
 
-### Обзор
+## Обзор
 
 Предлагается увидеть красоту природы России путешествуя по России.
 
 
 
-Использованные технологии
+###Использованные технологии
 
-Flex
+HTML 5
+CSS 3
+JavaScript
 
-Grid
+###Применялись
 
-Ссылка
+Flexbox
+ООП
+Npm
+Webpack
+API (POST, GET, PUT, DELETE)
+Grid Layout
+Media queries
+Nested БЭМ
+Семантическая разметка
+Позиционирование
+Popup
+
+
+###Ссылка
 https://konstantintyur.github.io/mesto/index.html
